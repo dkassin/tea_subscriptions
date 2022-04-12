@@ -17,8 +17,17 @@ RSpec.describe 'subscription API' do
     # @customer_1 = Customer.create!(first_name: 'Chuck', last_name: 'Norris', email: 'chuck_5@gmail.com', address: '123 Fake Address')
   # end
     it 'An endpoint to subscribe a customer to a tea subscription' do
+      data =
+    {
+      "subscription_id": @subscriptions[1].id, "tea_id": @teas[3].id
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    post '/api/v1/subscriptions', headers: headers, params: JSON.generate(data)
 
-
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
+    expect(TeaSubscription.last.subscription_id).to eq(data[:subscription_id])
+    expect(TeaSubscription.last.tea_id).to eq(data[:tea_id])
     end
 
     it 'An endpoint to cancel a customer’s tea subscription' do
@@ -27,6 +36,6 @@ RSpec.describe 'subscription API' do
 
     it 'An endpoint to see all of a customer’s subsciptions (active and cancelled)' do
 
-    end 
+    end
   end
 end
