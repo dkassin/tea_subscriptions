@@ -22,4 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-![Screen Shot 2022-04-12 at 11 24 54 AM](https://user-images.githubusercontent.com/76177498/163019389-fdda0124-964a-4d6b-9ed9-6c7f5675158d.png)
+
+![Screen Shot 2022-04-12 at 11 26 17 AM](https://user-images.githubusercontent.com/76177498/163019588-af900a2a-7c8a-4ce1-b44a-9337dad440bb.png)
