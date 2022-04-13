@@ -11,7 +11,7 @@ class Api::V1::SubscriptionsController < ApplicationController
   end
 
   def index
-    binding.pry
+    Subscription.find_subs_by_customer(params[:id])
   end
 end
 
