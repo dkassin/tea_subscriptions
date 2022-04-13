@@ -44,13 +44,11 @@ RSpec.describe 'subscription API' do
     end
 
     it 'An endpoint to see all of a customer’s subsciptions (active and cancelled)' do
-      data =
-    {
-      "customer_id": @customers[0].id
-    }
-    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
-    get '/api/v1/subscriptions', headers: headers, params: JSON.generate(data)
 
+      get "/api/v1/subscriptions/#{@customers[0].id}"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
     end
   end
 end

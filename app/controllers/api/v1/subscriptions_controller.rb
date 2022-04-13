@@ -9,6 +9,10 @@ class Api::V1::SubscriptionsController < ApplicationController
     subscription.update(subscription_params)
     render status: :no_content
   end
+
+  def index
+    binding.pry
+  end
 end
 
 private
