@@ -1,6 +1,22 @@
 class Api::V1::SubscriptionsController < ApplicationController
   def create
-    new_tea_subscription = TeaSubscription.create(subscription_id: params[:subscription_id], tea_id: params[:tea_id] )
+    TeaSubscription.create(tea_sub_params)
+    render status: :no_content
+  end
+
+  def update
+    subscription = TeaSubscription.find(params[:id]).subscription
+    subscription.update(subscription_params)
     render status: :no_content
   end
 end
+
+private
+
+  def subscription_params
+    params.permit(:title, :price, :status, :frequency)
+  end
+
+  def tea_sub_params
+    params.permit(:subscription_id, :tea_id)
+  end
