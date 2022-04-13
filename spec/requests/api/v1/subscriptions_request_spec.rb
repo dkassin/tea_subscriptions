@@ -31,10 +31,25 @@ RSpec.describe 'subscription API' do
     end
 
     it 'An endpoint to cancel a customer’s tea subscription' do
-
+      data =
+    {
+      "id": @tea_subscription_2.id, status: "cancelled"
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    expect do
+      patch '/api/v1/subscriptions', headers: headers, params: JSON.generate(data)
+    end.to change {@tea_subscription_2.reload.subscription.status}
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
     end
 
     it 'An endpoint to see all of a customer’s subsciptions (active and cancelled)' do
+      data =
+    {
+      "customer_id": @customers[0].id
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json', "Accept" => 'application/json' }
+    get '/api/v1/subscriptions', headers: headers, params: JSON.generate(data)
 
     end
   end
