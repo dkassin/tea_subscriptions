@@ -9,6 +9,11 @@ class Api::V1::SubscriptionsController < ApplicationController
     subscription.update(subscription_params)
     render status: :no_content
   end
+
+  def index
+    subscriptions = Subscription.find_subs_by_customer(params[:id])
+    render json: CustomerSubsSerializer.new(subscriptions)
+  end
 end
 
 private

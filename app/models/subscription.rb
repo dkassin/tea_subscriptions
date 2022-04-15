@@ -6,4 +6,8 @@ class Subscription < ApplicationRecord
   validates_presence_of :price
   validates_presence_of :status
   validates_presence_of :frequency
+
+  def self.find_subs_by_customer(customer_id)
+    Subscription.where(customer_id: customer_id)
+  end
 end
