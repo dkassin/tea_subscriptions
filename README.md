@@ -1,5 +1,5 @@
 # README
-# Fetch Rewards Coding Exercise - Backend Software Engineering
+# Tea Subscription
 
 ## Description
 
